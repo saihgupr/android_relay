@@ -17,7 +17,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
 
     override fun onCreate() {
         super.onCreate()
-        Log.d(TAG, "Service Created")
+        Log.i(TAG, "Service Created")
         mediaSessionManager = getSystemService(MEDIA_SESSION_SERVICE) as MediaSessionManager
         mqttClient = MqttRelay(this)
         mqttClient.connect()
@@ -25,7 +25,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        Log.d(TAG, "Listener Connected")
+        Log.i(TAG, "Listener Connected & Bound")
         val componentName = ComponentName(this, MediaSessionListenerService::class.java)
         mediaSessionManager.addOnActiveSessionsChangedListener(this, componentName)
         updateActiveSessions(mediaSessionManager.getActiveSessions(componentName))
@@ -85,7 +85,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
             "app": "$app"
         }""".trimIndent()
 
-        Log.d(TAG, "Reporting: $payload")
+        Log.i(TAG, "Reporting state: $stateStr for $app")
         mqttClient.publish(null, payload)
     }
 
@@ -96,6 +96,6 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     }
 
     companion object {
-        private const val TAG = "HATVRelay"
+        private const val TAG = "AndroidRelay"
     }
 }

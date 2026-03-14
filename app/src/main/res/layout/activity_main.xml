@@ -84,6 +84,13 @@
         android:textColorHint="#66FFFFFF" />
 
     <Button
+        android:id="@+id/test_mqtt_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Test Connection" />
+
+    <Button
         android:id="@+id/save_config_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

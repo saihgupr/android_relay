@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val mqttBrokerEdit = findViewById<android.widget.EditText>(R.id.mqtt_broker_edit)
         val mqttTopicEdit = findViewById<android.widget.EditText>(R.id.mqtt_topic_edit)
         val saveButton = findViewById<Button>(R.id.save_config_button)
+        val testButton = findViewById<Button>(R.id.test_mqtt_button)
 
         // Load existing config
         val prefs = getSharedPreferences("mqtt_config", MODE_PRIVATE)
@@ -42,6 +43,16 @@ class MainActivity : AppCompatActivity() {
             startService(intent)
             
             android.widget.Toast.makeText(this, "Configuration Saved", android.widget.Toast.LENGTH_SHORT).show()
+        }
+
+        testButton.setOnClickListener {
+            val mqtt = MqttRelay(this)
+            mqtt.connect()
+            // Wait a bit for connection before publishing
+            android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                mqtt.publish(null, "{\"status\": \"test\", \"message\": \"Hello from Android Relay UI\"}")
+                android.widget.Toast.makeText(this, "Test published (check logs)", android.widget.Toast.LENGTH_SHORT).show()
+            }, 2000)
         }
 
         updateStatus()
