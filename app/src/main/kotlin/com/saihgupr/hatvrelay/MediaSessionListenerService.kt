@@ -14,6 +14,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     private val controllers = mutableMapOf<String, MediaController>()
     private val callbacks = mutableMapOf<String, MediaController.Callback>()
     private lateinit var mqttClient: MqttRelay
+    private var lastPublishedPayload: String? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -84,6 +85,14 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
             "artist": "$artist",
             "app": "$app"
         }""".trimIndent()
+
+        // Cache the payload to prevent redundant MQTT publishes on position updates.
+        // `onPlaybackStateChanged` fires frequently for progress updates, which
+        // causes unnecessary network I/O if the state/title/artist haven't actually changed.
+        if (payload == lastPublishedPayload) {
+            return
+        }
+        lastPublishedPayload = payload
 
         Log.d(TAG, "Reporting: $payload")
         mqttClient.publish("android_tv/playback_state", payload)
