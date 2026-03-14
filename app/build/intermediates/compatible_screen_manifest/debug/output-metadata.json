@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.saihgupr.hatvrelay",
+  "applicationId": "com.saihgupr.androidrelay",
   "variantName": "debug",
   "elements": []
 }

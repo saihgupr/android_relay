@@ -1,4 +1,4 @@
-com.saihgupr.hatvrelay
+com.saihgupr.androidrelay
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -733,6 +733,8 @@ id listMode
 id list_item
 id message
 id middle
+id mqtt_broker_edit
+id mqtt_topic_edit
 id multiply
 id never
 id none
@@ -749,6 +751,7 @@ id progress_horizontal
 id radio
 id right_icon
 id right_side
+id save_config_button
 id screen
 id scrollIndicatorDown
 id scrollIndicatorUp

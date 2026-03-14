@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.saihgupr.hatvrelay.app-mergeDebugResources-19:/values-v21/values-v21.xml",
+            "outputFile": "com.saihgupr.androidrelay.app-mergeDebugResources-19:/values-v21/values-v21.xml",
             "map": [
                 {
                     "source": "/Users/chrislapointe/.gradle/caches/transforms-3/1d305eb81abcd87f7235fdea3106ff86/transformed/appcompat-1.6.1/res/values-v21/values-v21.xml",
