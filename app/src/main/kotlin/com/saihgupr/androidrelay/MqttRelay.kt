@@ -17,7 +17,7 @@ class MqttRelay(private val context: Context) {
     private val defaultTopic: String
         get() = prefs.getString("topic", "android_tv/playback_state") ?: "android_tv/playback_state"
 
-    private val clientId = "AndroidTVRelay_${android.os.Build.ID}"
+    private val clientId = "AndroidTVRelay_${android.os.Build.ID}_${java.util.UUID.randomUUID().toString().take(4)}"
     private var mqttClient: MqttClient? = null
 
     fun connect() {
