@@ -2,19 +2,19 @@
 
 An ultra-lightweight Android TV application that monitors system-wide media sessions and relays playback state to Home Assistant in real-time via MQTT.
 
-## 🚀 How it Works
+## How it Works
 This app uses a background `NotificationListenerService` to observe `MediaSession` events. Unlike polling-based solutions, it only triggers when the system reports a change in playback state (Play, Pause, Stop) or metadata (Title, Artist).
 
 - **Ultra-lightweight**: Minimal CPU and memory footprint.
 - **TV Optimized**: Supports Leanback launcher and dark theme.
 - **Real-time**: Near-zero latency reporting to MQTT.
 
-## 🛠 Prerequisites
+## Prerequisites
 - **Android TV device** on the local network.
 - **MQTT Broker** (e.g., Mosquitto in Home Assistant).
 - **ADB access** to the TV.
 
-## 📦 Installation
+## Installation
 
 ### 1. Build and Install
 If you have the APK, install it via ADB:
@@ -32,7 +32,7 @@ adb shell cmd notification allow_listener com.chrisl.hatvrelay/.MediaSessionList
 ### 3. Launch
 Open the "HA TV Relay" app on your TV to ensure the service initials. You can then close it; the service runs in the background.
 
-## 🏠 Home Assistant Configuration
+## Home Assistant Configuration
 
 Add these sensors to your `configuration.yaml`:
 
@@ -56,12 +56,12 @@ mqtt:
       icon: mdi:music-note
 ```
 
-## 📝 Configuration
+## Configuration
 The MQTT broker and topic are currently configured in `MqttRelay.kt`:
 - **Broker**: `tcp://192.168.1.199:1883`
 - **Topic**: `android_tv/playback_state`
 
-## 🏗 Build Requirements
+## Build Requirements
 - Android SDK 34
 - Gradle 7.6.6
 - Java 17
