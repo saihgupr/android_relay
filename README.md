@@ -1,4 +1,4 @@
-# Android TV Media Relay
+# Android Relay
 
 An ultra-lightweight Android TV application that monitors system-wide media sessions and relays playback state to Home Assistant in real-time via MQTT.
 
@@ -31,7 +31,7 @@ adb shell cmd notification allow_listener com.saihgupr.hatvrelay/.MediaSessionLi
 ```
 
 ### 3. Launch
-Open the "HA TV Relay" app on your TV to ensure the service initials. You can then close it; the service runs in the background.
+Open the "Android Relay" app on your TV to ensure the service initials. You can then close it; the service runs in the background.
 
 ## Home Assistant Configuration
 
