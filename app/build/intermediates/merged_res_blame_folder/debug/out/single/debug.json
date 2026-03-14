@@ -1,14 +1,22 @@
 [
     {
-        "merged": "com.chrisl.hatvrelay.app-merged_res-21:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.chrisl.hatvrelay.app-main-23:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-merged_res-21:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-main-23:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.chrisl.hatvrelay.app-merged_res-21:/drawable_ic_relay.xml.flat",
-        "source": "com.chrisl.hatvrelay.app-main-23:/drawable/ic_relay.xml"
+        "merged": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-merged_res-21:/mipmap-xhdpi_banner.png.flat",
+        "source": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-main-23:/mipmap-xhdpi/banner.png"
     },
     {
-        "merged": "com.chrisl.hatvrelay.app-merged_res-21:/layout_activity_main.xml.flat",
-        "source": "com.chrisl.hatvrelay.app-main-23:/layout/activity_main.xml"
+        "merged": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-merged_res-21:/layout_activity_main.xml.flat",
+        "source": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-main-23:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-merged_res-21:/drawable_ic_relay.xml.flat",
+        "source": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-main-23:/drawable/ic_relay.xml"
+    },
+    {
+        "merged": "com.saihgupr.hatvrelay.app-merged_res-21:/layout_activity_main.xml.flat",
+        "source": "com.saihgupr.hatvrelay.app-main-23:/layout/activity_main.xml"
     }
 ]

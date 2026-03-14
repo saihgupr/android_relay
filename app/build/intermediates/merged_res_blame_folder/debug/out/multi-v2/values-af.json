@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.chrisl.hatvrelay.app-mergeDebugResources-19:/values-af/values-af.xml",
+            "outputFile": "com.saihgupr.hatvrelay.app-mergeDebugResources-19:/values-af/values-af.xml",
             "map": [
                 {
                     "source": "/Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/res/values-af/values-af.xml",

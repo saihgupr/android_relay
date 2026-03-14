@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.chrisl.hatvrelay"
+3    package="com.saihgupr.hatvrelay"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -25,88 +25,90 @@
 15
 16    <permission
 16-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
-17        android:name="com.chrisl.hatvrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+17        android:name="com.saihgupr.hatvrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 17-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
 18        android:protectionLevel="signature" />
 18-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
 19
-20    <uses-permission android:name="com.chrisl.hatvrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+20    <uses-permission android:name="com.saihgupr.hatvrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 20-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
 20-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 21
 22    <application
-22-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:10:5-35:19
+22-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:10:5-36:19
 23        android:allowBackup="true"
 23-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:11:9-35
 24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 24-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
-25        android:debuggable="true"
-26        android:icon="@mipmap/ic_launcher"
-26-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:12:9-43
-27        android:label="HA TV Relay"
-27-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:13:9-36
-28        android:theme="@style/Theme.AppCompat.NoActionBar" >
-28-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:14:9-59
-29        <activity
-29-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:16:9-24:20
-30            android:name="com.chrisl.hatvrelay.MainActivity"
-30-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:17:13-41
-31            android:exported="true" >
-31-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:18:13-36
-32            <intent-filter>
-32-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:19:13-23:29
-33                <action android:name="android.intent.action.MAIN" />
-33-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:20:17-69
-33-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:20:25-66
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:21:17-77
-35-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:21:27-74
-36                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-36-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:22:17-86
-36-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:22:27-83
-37            </intent-filter>
-38        </activity>
-39
-40        <service
-40-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:26:9-34:19
-41            android:name="com.chrisl.hatvrelay.MediaSessionListenerService"
-41-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:27:13-56
-42            android:exported="true"
-42-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:30:13-36
-43            android:label="HA Media Relay Service"
-43-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:28:13-51
-44            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
-44-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:29:13-87
-45            <intent-filter>
-45-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:31:13-33:29
-46                <action android:name="android.service.notification.NotificationListenerService" />
-46-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:32:17-99
-46-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:32:25-96
-47            </intent-filter>
-48        </service>
-49
-50        <provider
-50-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-51            android:name="androidx.startup.InitializationProvider"
-51-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-52            android:authorities="com.chrisl.hatvrelay.androidx-startup"
-52-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-53            android:exported="false" >
-53-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-54            <meta-data
-54-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-55                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-55-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-56                android:value="androidx.startup" />
-56-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-57            <meta-data
-57-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/chrislapointe/.gradle/caches/transforms-3/47094390be2b6df3a63019213a7c72df/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
-58                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-58-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/chrislapointe/.gradle/caches/transforms-3/47094390be2b6df3a63019213a7c72df/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
-59                android:value="androidx.startup" />
-59-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/chrislapointe/.gradle/caches/transforms-3/47094390be2b6df3a63019213a7c72df/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
-60        </provider>
-61    </application>
-62
-63</manifest>
+25        android:banner="@mipmap/banner"
+25-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:13:9-40
+26        android:debuggable="true"
+27        android:icon="@mipmap/ic_launcher"
+27-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:12:9-43
+28        android:label="HA TV Relay"
+28-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:14:9-36
+29        android:theme="@style/Theme.AppCompat.NoActionBar" >
+29-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:15:9-59
+30        <activity
+30-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:17:9-25:20
+31            android:name="com.saihgupr.hatvrelay.MainActivity"
+31-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:18:13-41
+32            android:exported="true" >
+32-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:19:13-36
+33            <intent-filter>
+33-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:20:13-24:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:21:17-69
+34-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:21:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:22:17-77
+36-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:22:27-74
+37                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+37-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:23:17-86
+37-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:23:27-83
+38            </intent-filter>
+39        </activity>
+40
+41        <service
+41-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:27:9-35:19
+42            android:name="com.saihgupr.hatvrelay.MediaSessionListenerService"
+42-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:28:13-56
+43            android:exported="true"
+43-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:31:13-36
+44            android:label="HA Media Relay Service"
+44-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:29:13-51
+45            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+45-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:30:13-87
+46            <intent-filter>
+46-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:32:13-34:29
+47                <action android:name="android.service.notification.NotificationListenerService" />
+47-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:33:17-99
+47-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:33:25-96
+48            </intent-filter>
+49        </service>
+50
+51        <provider
+51-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+52            android:name="androidx.startup.InitializationProvider"
+52-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+53            android:authorities="com.saihgupr.hatvrelay.androidx-startup"
+53-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+54            android:exported="false" >
+54-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+55            <meta-data
+55-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+56                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+56-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+57                android:value="androidx.startup" />
+57-->[androidx.emoji2:emoji2:1.2.0] /Users/chrislapointe/.gradle/caches/transforms-3/ed1210294d49b69bc2fe0500854d4a9c/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+58            <meta-data
+58-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/chrislapointe/.gradle/caches/transforms-3/47094390be2b6df3a63019213a7c72df/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+59                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+59-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/chrislapointe/.gradle/caches/transforms-3/47094390be2b6df3a63019213a7c72df/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+60                android:value="androidx.startup" />
+60-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/chrislapointe/.gradle/caches/transforms-3/47094390be2b6df3a63019213a7c72df/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+61        </provider>
+62    </application>
+63
+64</manifest>

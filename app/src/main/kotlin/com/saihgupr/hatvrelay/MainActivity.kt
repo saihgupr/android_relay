@@ -1,0 +1,51 @@
+package com.saihgupr.hatvrelay
+
+import android.content.Intent
+import android.os.Bundle
+import android.provider.Settings
+import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val statusText = findViewById<TextView>(R.id.status_text)
+        val permissionButton = findViewById<Button>(R.id.permission_button)
+
+        permissionButton.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
+        }
+
+        updateStatus()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateStatus()
+    }
+
+    private fun updateStatus() {
+        val statusText = findViewById<TextView>(R.id.status_text)
+        val permissionButton = findViewById<Button>(R.id.permission_button)
+        val adbInstructions = findViewById<TextView>(R.id.adb_instructions)
+
+        val enabledListeners = Settings.Secure.getString(contentResolver, "enabled_notification_listeners")
+        val isEnabled = enabledListeners?.contains(packageName) == true
+        
+        if (isEnabled) {
+            statusText.text = "Status: Connected & Authorized"
+            statusText.setTextColor(android.graphics.Color.GREEN)
+            permissionButton.visibility = android.view.View.GONE
+            adbInstructions.visibility = android.view.View.GONE
+        } else {
+            statusText.text = "Status: Permission Required"
+            statusText.setTextColor(android.graphics.Color.RED)
+            permissionButton.visibility = android.view.View.VISIBLE
+            adbInstructions.visibility = android.view.View.VISIBLE
+        }
+    }
+}

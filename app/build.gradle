@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.chrisl.hatvrelay'
+    namespace 'com.saihgupr.hatvrelay'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.chrisl.hatvrelay"
+        applicationId "com.saihgupr.hatvrelay"
         minSdk 21
         targetSdk 34
         versionCode 1

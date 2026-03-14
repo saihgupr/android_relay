@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.chrisl.hatvrelay.app-mergeDebugResources-19:/values/values.xml",
+            "outputFile": "com.saihgupr.hatvrelay.app-mergeDebugResources-19:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/chrislapointe/.gradle/caches/transforms-3/9faaa6b65c67b101f72c6e52f9d40e58/transformed/jetified-appcompat-resources-1.6.1/res/values/values.xml",

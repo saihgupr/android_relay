@@ -27,7 +27,7 @@ adb install app-debug.apk
 ### 2. Grant Permissions
 Android TV hides the "Notification Access" menu. Grant the required permission via ADB:
 ```bash
-adb shell cmd notification allow_listener com.chrisl.hatvrelay/.MediaSessionListenerService
+adb shell cmd notification allow_listener com.saihgupr.hatvrelay/.MediaSessionListenerService
 ```
 
 ### 3. Launch
