@@ -36,7 +36,7 @@ INJECTED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/sr
 INJECTED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:2:1-37:12
 INJECTED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:2:1-37:12
 	package
-		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:3:5-40
+		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:3:5-37
 		INJECTED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -89,7 +89,7 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/chrislapointe/.gradl
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:13:9-42
 	android:theme
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:15:9-59
-activity#com.saihgupr.androidrelay.MainActivity
+activity#com.saihgupr.hatvrelay.MainActivity
 ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:17:9-25:20
 	android:exported
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:19:13-36
@@ -109,7 +109,7 @@ category#android.intent.category.LEANBACK_LAUNCHER
 ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:23:17-86
 	android:name
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:23:27-83
-service#com.saihgupr.androidrelay.MediaSessionListenerService
+service#com.saihgupr.hatvrelay.MediaSessionListenerService
 ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:27:9-35:19
 	android:label
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:29:13-50
@@ -221,7 +221,7 @@ ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transf
 		ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
-permission#com.saihgupr.androidrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#com.saihgupr.hatvrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
@@ -231,7 +231,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
-uses-permission#com.saihgupr.androidrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#com.saihgupr.hatvrelay.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:26:22-94

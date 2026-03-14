@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.saihgupr.androidrelay'
+    namespace 'com.saihgupr.hatvrelay'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.saihgupr.androidrelay"
+        applicationId "com.saihgupr.hatvrelay"
         minSdk 21
         targetSdk 34
         versionCode 1
