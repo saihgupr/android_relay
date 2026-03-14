@@ -13,8 +13,8 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     private lateinit var mediaSessionManager: MediaSessionManager
     private val controllers = mutableMapOf<String, MediaController>()
     private val callbacks = mutableMapOf<String, MediaController.Callback>()
+    private val lastPublishedPayloads = mutableMapOf<String, String>()
     private lateinit var mqttClient: MqttRelay
-    private var lastPublishedPayload: String? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -37,9 +37,14 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     }
 
     private fun updateActiveSessions(activeControllers: List<MediaController>?) {
-        // Remove old callbacks
+        val activePackages = activeControllers?.map { it.packageName }?.toSet() ?: emptySet()
+
+        // Remove old callbacks and clean up payload cache for inactive sessions
         controllers.keys.forEach { key ->
             controllers[key]?.unregisterCallback(callbacks[key]!!)
+            if (key !in activePackages) {
+                lastPublishedPayloads.remove(key)
+            }
         }
         controllers.clear()
         callbacks.clear()
@@ -86,13 +91,13 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
             "app": "$app"
         }""".trimIndent()
 
-        // Cache the payload to prevent redundant MQTT publishes on position updates.
+        // Cache the payload per-app to prevent redundant MQTT publishes on position updates.
         // `onPlaybackStateChanged` fires frequently for progress updates, which
         // causes unnecessary network I/O if the state/title/artist haven't actually changed.
-        if (payload == lastPublishedPayload) {
+        if (payload == lastPublishedPayloads[app]) {
             return
         }
-        lastPublishedPayload = payload
+        lastPublishedPayloads[app] = payload
 
         Log.d(TAG, "Reporting: $payload")
         mqttClient.publish("android_tv/playback_state", payload)
