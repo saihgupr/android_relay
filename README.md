@@ -8,6 +8,7 @@ This app uses a background `NotificationListenerService` to observe `MediaSessio
 - **Ultra-lightweight**: Minimal CPU and memory footprint.
 - **TV Optimized**: Supports Leanback launcher and dark theme.
 - **Real-time**: Near-zero latency reporting to MQTT.
+- **Persistent**: Automatically restarts on boot (managed by Android System).
 
 ## Prerequisites
 - **Android TV device** on the local network.
@@ -65,3 +66,6 @@ The MQTT broker and topic are currently configured in `MqttRelay.kt`:
 - Android SDK 34
 - Gradle 7.6.6
 - Java 17
+
+## Persistence
+The `NotificationListenerService` is a system-managed component. Because the listener was enabled via ADB (secure settings), Android will automatically re-bind to the service on every boot. No manual intervention or "Start at Boot" apps are required.
