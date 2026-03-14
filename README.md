@@ -10,28 +10,20 @@ This app uses a background `NotificationListenerService` to observe `MediaSessio
 - **Real-time**: Near-zero latency reporting to MQTT.
 - **Persistent**: Automatically restarts on boot (managed by Android System).
 
-## Prerequisites
-- **Android TV device** on the local network.
-- **MQTT Broker** (e.g., Mosquitto in Home Assistant).
-- **ADB access** to the TV.
-
 ## Installation
 
 ### 1. Build and Install
-If you have the APK, install it via ADB:
+Install the APK via ADB:
 ```bash
 adb connect <TV_IP>:5555
 adb install app-debug.apk
 ```
 
-### 2. Grant Permissions
-Android TV hides the "Notification Access" menu. Grant the required permission via ADB:
-```bash
-adb shell cmd notification allow_listener com.saihgupr.hatvrelay/.MediaSessionListenerService
-```
-
-### 3. Launch
-Open the "Android Relay" app on your TV to ensure the service initials. You can then close it; the service runs in the background.
+### 2. Configure
+Launch the **Android Relay** app on your TV to:
+1. **Grant Permission**: Allow the app to listen to media notifications.
+2. **Set MQTT**: Enter your MQTT Broker IP and Topic directly in the app.
+3. **Test**: Use the "Test Connection" button to verify your setup.
 
 ## Home Assistant Configuration
 
@@ -57,15 +49,10 @@ mqtt:
       icon: mdi:music-note
 ```
 
-## Configuration
-The MQTT broker and topic are currently configured in `MqttRelay.kt`:
-- **Broker**: `tcp://192.168.1.199:1883`
-- **Topic**: `android_tv/playback_state`
-
 ## Build Requirements
 - Android SDK 34
 - Gradle 7.6.6
 - Java 17
 
 ## Persistence
-The `NotificationListenerService` is a system-managed component. Because the listener was enabled via ADB (secure settings), Android will automatically re-bind to the service on every boot. No manual intervention or "Start at Boot" apps are required.
+The `NotificationListenerService` is a system-managed component. Once enabled, Android will automatically re-bind to the service on every boot. No manual intervention or "Start at Boot" apps are required.

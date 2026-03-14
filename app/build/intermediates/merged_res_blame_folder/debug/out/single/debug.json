@@ -4,8 +4,8 @@
         "source": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-main-23:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.saihgupr.hatvrelay.app-merged_res-21:/drawable_banner.png.flat",
-        "source": "com.saihgupr.hatvrelay.app-main-23:/drawable/banner.png"
+        "merged": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-merged_res-21:/drawable_banner.png.flat",
+        "source": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-main-23:/drawable/banner.png"
     },
     {
         "merged": "/Users/chrislapointe/.gradle/daemon/7.6.6/com.saihgupr.hatvrelay.app-merged_res-21:/mipmap-xhdpi_banner.png.flat",

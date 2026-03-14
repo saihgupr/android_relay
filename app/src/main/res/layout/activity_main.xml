@@ -21,26 +21,80 @@
         android:id="@+id/status_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Status: Checking..."
-        android:textSize="18sp"
-        android:textColor="#CCCCCC"
-        android:layout_marginBottom="32dp"/>
+        android:textColor="#BBBBBB"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/permission_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Grant Permission"
-        android:padding="16dp"/>
-        
+        android:layout_marginTop="16dp"
+        android:text="Grant Permission" />
+
     <TextView
         android:id="@+id/adb_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:text="Run via ADB:\nadb shell cmd notification allow_listener com.saihgupr.hatvrelay/.MediaSessionListenerService"
+        android:textColor="#888888"
+        android:textSize="12sp"
+        android:textAlignment="center" />
+
+    <!-- MQTT Configuration Section -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="32dp"
+        android:background="#33FFFFFF" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="If button doesn't work, run:\nadb shell cmd notification allow_listener com.saihgupr.hatvrelay/.MediaSessionListenerService"
-        android:textSize="12sp"
-        android:textColor="#AAAAAA"
-        android:gravity="center"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="16dp"
+        android:text="MQTT Configuration"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/mqtt_broker_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#22FFFFFF"
+        android:hint="Broker IP (e.g., 192.168.1.199)"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#66FFFFFF" />
+
+    <EditText
+        android:id="@+id/mqtt_topic_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#22FFFFFF"
+        android:hint="Topic (e.g., android_tv/playback_state)"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#66FFFFFF" />
+
+    <Button
+        android:id="@+id/test_mqtt_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Test Connection" />
+
+    <Button
+        android:id="@+id/save_config_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Save &amp; Restart Service" />
 
 </LinearLayout>
