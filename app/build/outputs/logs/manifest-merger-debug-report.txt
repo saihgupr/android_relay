@@ -80,13 +80,13 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/chrislapointe/.gradl
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:14:9-36
+		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:14:9-41
 	android:icon
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:12:9-43
 	android:allowBackup
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:11:9-35
 	android:banner
-		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:13:9-40
+		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:13:9-42
 	android:theme
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:15:9-59
 activity#com.saihgupr.hatvrelay.MainActivity
@@ -112,7 +112,7 @@ ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/m
 service#com.saihgupr.hatvrelay.MediaSessionListenerService
 ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:27:9-35:19
 	android:label
-		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:29:13-51
+		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:29:13-50
 	android:exported
 		ADDED from /Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:31:13-36
 	android:permission
