@@ -23,7 +23,7 @@
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
-        android:icon="@drawable/ic_relay"
+        android:icon="@mipmap/ic_launcher"
         android:label="HA TV Relay"
         android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity

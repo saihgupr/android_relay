@@ -6,22 +6,22 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml
+8-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="34" />
-9-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml
+9-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:5:5-67
-11-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:5:22-64
+11-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:6:5-79
-12-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:6:22-76
+12-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:6:22-76
 13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-13-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:7:5-77
-13-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:7:22-74
+13-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:7:5-77
+13-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:7:22-74
 14    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
-14-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:8:5-93
-14-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:8:22-90
+14-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:8:5-93
+14-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:8:22-90
 15
 16    <permission
 16-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
@@ -35,54 +35,54 @@
 20-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 21
 22    <application
-22-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:10:5-35:19
+22-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:10:5-35:19
 23        android:allowBackup="true"
-23-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:11:9-35
+23-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:11:9-35
 24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 24-->[androidx.core:core:1.9.0] /Users/chrislapointe/.gradle/caches/transforms-3/377c4f8e06c273db926559a8801affda/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 25        android:debuggable="true"
-26        android:icon="@drawable/ic_relay"
-26-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:12:9-42
+26        android:icon="@mipmap/ic_launcher"
+26-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:12:9-43
 27        android:label="HA TV Relay"
-27-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:13:9-36
+27-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:13:9-36
 28        android:theme="@style/Theme.AppCompat.NoActionBar" >
-28-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:14:9-59
+28-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:14:9-59
 29        <activity
-29-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:16:9-24:20
+29-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:16:9-24:20
 30            android:name="com.chrisl.hatvrelay.MainActivity"
-30-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:17:13-41
+30-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:17:13-41
 31            android:exported="true" >
-31-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:18:13-36
+31-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:18:13-36
 32            <intent-filter>
-32-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:19:13-23:29
+32-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:19:13-23:29
 33                <action android:name="android.intent.action.MAIN" />
-33-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:20:17-69
-33-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:20:25-66
+33-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:20:17-69
+33-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:20:25-66
 34
 35                <category android:name="android.intent.category.LAUNCHER" />
-35-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:21:17-77
-35-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:21:27-74
+35-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:21:17-77
+35-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:21:27-74
 36                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-36-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:22:17-86
-36-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:22:27-83
+36-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:22:17-86
+36-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:22:27-83
 37            </intent-filter>
 38        </activity>
 39
 40        <service
-40-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:26:9-34:19
+40-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:26:9-34:19
 41            android:name="com.chrisl.hatvrelay.MediaSessionListenerService"
-41-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:27:13-56
+41-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:27:13-56
 42            android:exported="true"
-42-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:30:13-36
+42-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:30:13-36
 43            android:label="HA Media Relay Service"
-43-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:28:13-51
+43-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:28:13-51
 44            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
-44-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:29:13-87
+44-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:29:13-87
 45            <intent-filter>
-45-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:31:13-33:29
+45-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:31:13-33:29
 46                <action android:name="android.service.notification.NotificationListenerService" />
-46-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:32:17-99
-46-->/Users/chrislapointe/.gemini/antigravity/scratch/android_relay/app/src/main/AndroidManifest.xml:32:25-96
+46-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:32:17-99
+46-->/Users/chrislapointe/Projects/CurrentProjects/android_relay/app/src/main/AndroidManifest.xml:32:25-96
 47            </intent-filter>
 48        </service>
 49
