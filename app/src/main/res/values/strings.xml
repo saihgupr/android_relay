@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HA TV Relay</string>
+    <style name="Theme.HATVRelay" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#2196F3</item>
+        <item name="android:windowBackground">#121212</item>
+    </style>
+</resources>
