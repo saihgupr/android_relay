@@ -7,6 +7,7 @@ import android.media.session.MediaSessionManager
 import android.media.session.PlaybackState
 import android.service.notification.NotificationListenerService
 import android.util.Log
+import org.json.JSONObject
 
 class MediaSessionListenerService : NotificationListenerService(), MediaSessionManager.OnActiveSessionsChangedListener {
 
@@ -39,33 +40,37 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     private fun updateActiveSessions(activeControllers: List<MediaController>?) {
         val activePackages = activeControllers?.map { it.packageName }?.toSet() ?: emptySet()
 
-        // Remove old callbacks and clean up payload cache for inactive sessions
-        controllers.keys.forEach { key ->
-            controllers[key]?.unregisterCallback(callbacks[key]!!)
-            if (key !in activePackages) {
-                lastPublishedPayloads.remove(key)
+        // Remove old callbacks for apps that are no longer active
+        val iterator = controllers.entries.iterator()
+        while (iterator.hasNext()) {
+            val (pkg, controller) = iterator.next()
+            if (pkg !in activePackages) {
+                controller.unregisterCallback(callbacks[pkg]!!)
+                callbacks.remove(pkg)
+                lastPublishedPayloads.remove(pkg)
+                iterator.remove()
             }
         }
-        controllers.clear()
-        callbacks.clear()
 
         activeControllers?.forEach { controller ->
             val pkg = controller.packageName
-            val callback = object : MediaController.Callback() {
-                override fun onPlaybackStateChanged(state: PlaybackState?) {
-                    reportState(controller)
-                }
+            if (!controllers.containsKey(pkg)) {
+                val callback = object : MediaController.Callback() {
+                    override fun onPlaybackStateChanged(state: PlaybackState?) {
+                        reportState(controller)
+                    }
 
-                override fun onMetadataChanged(metadata: MediaMetadata?) {
-                    reportState(controller)
+                    override fun onMetadataChanged(metadata: MediaMetadata?) {
+                        reportState(controller)
+                    }
                 }
+                controller.registerCallback(callback)
+                controllers[pkg] = controller
+                callbacks[pkg] = callback
+                
+                // Initial report
+                reportState(controller)
             }
-            controller.registerCallback(callback)
-            controllers[pkg] = controller
-            callbacks[pkg] = callback
-            
-            // Initial report
-            reportState(controller)
         }
     }
 
@@ -86,25 +91,24 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
         val durationSec = if (durationMs > 0) durationMs / 1000 else 0L
         val app = controller.packageName
 
-        val payload = """{
-            "state": "$stateStr",
-            "title": "$title",
-            "artist": "$artist",
-            "duration": $durationSec,
-            "app": "$app"
-        }""".trimIndent()
+        val payload = JSONObject().apply {
+            put("state", stateStr)
+            put("title", title)
+            put("artist", artist)
+            put("app", app)
+            put("duration", durationSec)
+        }.toString()
 
         // Cache the payload per-app to prevent redundant MQTT publishes on position updates.
         // `onPlaybackStateChanged` fires frequently for progress updates, which
         // causes unnecessary network I/O if the state/title/artist haven't actually changed.
         if (payload == lastPublishedPayloads[app]) {
-            Log.v(TAG, "Skipping identical payload for $app")
             return
         }
         lastPublishedPayloads[app] = payload
 
         Log.d(TAG, "Reporting: $payload")
-        mqttClient.publish("android_tv/playback_state", payload)
+        mqttClient.publish(null, payload)
     }
 
     override fun onDestroy() {
