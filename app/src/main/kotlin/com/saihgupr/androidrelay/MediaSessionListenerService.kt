@@ -82,14 +82,15 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
 
         val title = metadata?.getString(MediaMetadata.METADATA_KEY_TITLE) ?: ""
         val artist = metadata?.getString(MediaMetadata.METADATA_KEY_ARTIST) ?: ""
-        val duration = metadata?.getLong(MediaMetadata.METADATA_KEY_DURATION) ?: 0L
+        val durationMs = metadata?.getLong(MediaMetadata.METADATA_KEY_DURATION) ?: 0L
+        val durationSec = if (durationMs > 0) durationMs / 1000 else 0L
         val app = controller.packageName
 
         val payload = """{
             "state": "$stateStr",
             "title": "$title",
             "artist": "$artist",
-            "duration": $duration,
+            "duration": $durationSec,
             "app": "$app"
         }""".trimIndent()
 
