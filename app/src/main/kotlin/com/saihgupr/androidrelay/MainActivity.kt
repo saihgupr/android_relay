@@ -1,5 +1,6 @@
 package com.saihgupr.androidrelay
 
+import com.saihgupr.hatvrelay.R
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings

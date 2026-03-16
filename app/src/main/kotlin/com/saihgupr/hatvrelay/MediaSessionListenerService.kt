@@ -84,12 +84,12 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
         val artist = metadata?.getString(MediaMetadata.METADATA_KEY_ARTIST) ?: ""
         val app = controller.packageName
 
-        val payload = """{
-            "state": "$stateStr",
-            "title": "$title",
-            "artist": "$artist",
-            "app": "$app"
-        }""".trimIndent()
+        val payload = org.json.JSONObject().apply {
+            put("state", stateStr)
+            put("title", title)
+            put("artist", artist)
+            put("app", app)
+        }.toString()
 
         // Cache the payload per-app to prevent redundant MQTT publishes on position updates.
         // `onPlaybackStateChanged` fires frequently for progress updates, which
