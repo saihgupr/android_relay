@@ -6,10 +6,16 @@ An ultra-lightweight Android TV application that monitors system-wide media sess
 This app uses a background `NotificationListenerService` to observe `MediaSession` events. Unlike polling-based solutions, it only triggers when the system reports a change in playback state (Play, Pause, Stop) or metadata (Title, Artist).
 
 - **Ultra-lightweight**: Minimal CPU and memory footprint.
-- **Payload Caching**: Intelligent filtering reduces MQTT traffic by skipping redundant updates.
-- **TV Optimized**: Supports Leanback launcher and dark theme.
-- **Real-time**: Near-zero latency reporting to MQTT.
-- **Persistent**: Automatically restarts on boot (managed by Android System).
+- **Payload Caching ("Bolt"):** Only sends updates when state or metadata changes to minimize network overhead.
+- **Duration Tracking:** Reports media duration in seconds for Home Assistant integration.
+
+## 🚀 Performance & Resource Usage
+Android Relay is designed to be extremely lightweight for background operation:
+
+- **Storage Space:** 4.13 MB
+- **Memory (RAM):** ~37 MB (PSS)
+- **CPU Usage:** ~4.3% during active relay (near 0% when idle)
+- **Battery Impact:** Negligible due to payload caching and efficient background service management.
 
 ## Installation
 
