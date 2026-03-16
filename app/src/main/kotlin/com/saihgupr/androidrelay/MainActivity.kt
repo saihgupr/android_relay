@@ -6,6 +6,7 @@ import android.provider.Settings
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.saihgupr.hatvrelay.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -13,6 +13,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     private lateinit var mediaSessionManager: MediaSessionManager
     private val controllers = mutableMapOf<String, MediaController>()
     private val callbacks = mutableMapOf<String, MediaController.Callback>()
+    private val lastReportedPayloads = mutableMapOf<String, String>()
     private lateinit var mqttClient: MqttRelay
 
     override fun onCreate() {
@@ -42,6 +43,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
         }
         controllers.clear()
         callbacks.clear()
+        lastReportedPayloads.clear()
 
         activeControllers?.forEach { controller ->
             val pkg = controller.packageName
@@ -85,8 +87,15 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
             "app": "$app"
         }""".trimIndent()
 
-        Log.i(TAG, "Reporting state: $stateStr for $app")
-        mqttClient.publish(null, payload)
+        // Bolt optimization: Cache the payload per app to prevent redundant MQTT publishes
+        // This stops sending the exact same payload when playback position updates trigger state changes
+        if (lastReportedPayloads[app] != payload) {
+            lastReportedPayloads[app] = payload
+            Log.i(TAG, "Reporting state: $stateStr for $app")
+            mqttClient.publish(null, payload)
+        } else {
+            Log.v(TAG, "Skipping identical payload for $app")
+        }
     }
 
     override fun onDestroy() {
