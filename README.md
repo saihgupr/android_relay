@@ -6,6 +6,7 @@ An ultra-lightweight Android TV application that monitors system-wide media sess
 This app uses a background `NotificationListenerService` to observe `MediaSession` events. Unlike polling-based solutions, it only triggers when the system reports a change in playback state (Play, Pause, Stop) or metadata (Title, Artist).
 
 - **Ultra-lightweight**: Minimal CPU and memory footprint.
+- **Payload Caching**: Intelligent filtering reduces MQTT traffic by skipping redundant updates.
 - **TV Optimized**: Supports Leanback launcher and dark theme.
 - **Real-time**: Near-zero latency reporting to MQTT.
 - **Persistent**: Automatically restarts on boot (managed by Android System).
@@ -17,6 +18,11 @@ Install the APK via ADB:
 ```bash
 adb connect <TV_IP>:5555
 adb install app-debug.apk
+```
+
+If you cannot access the settings menu easily on your TV, you can grant the required notification permission via ADB:
+```bash
+adb shell cmd notification allow_listener com.saihgupr.androidrelay/.MediaSessionListenerService
 ```
 
 ### 2. Configure
@@ -51,8 +57,8 @@ mqtt:
 
 ## Build Requirements
 - Android SDK 34
-- Gradle 7.6.6
-- Java 17
+- Gradle 8.5+
+- Java 21
 
 ## Persistence
 The `NotificationListenerService` is a system-managed component. Once enabled, Android will automatically re-bind to the service on every boot. No manual intervention or "Start at Boot" apps are required.
