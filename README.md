@@ -53,6 +53,12 @@ mqtt:
       state_topic: "android_tv/playback_state"
       value_template: "{{ value_json.title }}"
       icon: mdi:music-note
+
+    - name: "Android TV Media Duration"
+      state_topic: "android_tv/playback_state"
+      value_template: "{{ value_json.duration }}"
+      unit_of_measurement: "ms"
+      icon: mdi:timer-outline
 ```
 
 ## Build Requirements
