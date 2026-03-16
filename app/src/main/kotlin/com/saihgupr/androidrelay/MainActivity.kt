@@ -1,5 +1,6 @@
 package com.saihgupr.androidrelay
 
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -38,11 +39,9 @@ class MainActivity : AppCompatActivity() {
                 .apply()
             
             // Restart service to pick up changes
-            val intent = Intent(this, MediaSessionListenerService::class.java)
-            stopService(intent)
-            startService(intent)
-            
-            android.widget.Toast.makeText(this, "Configuration Saved", android.widget.Toast.LENGTH_SHORT).show()
+            val componentName = ComponentName(this, MediaSessionListenerService::class.java)
+            android.service.notification.NotificationListenerService.requestRebind(componentName)
+            android.widget.Toast.makeText(this, "Relay Service Re-initialized", android.widget.Toast.LENGTH_SHORT).show()
         }
 
         val testResultText = findViewById<TextView>(R.id.test_result_text)

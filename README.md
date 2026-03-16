@@ -1,12 +1,13 @@
 # Android Relay
 
-An ultra-lightweight Android application—designed for Android TV but fully mobile-compatible—that monitors system-wide media sessions and relays playback state to Home Assistant in real-time via MQTT.
+A premium, high-performance, and lightweight Android (TV & Mobile) application that relays media playback state to Home Assistant via MQTT. Built for extreme efficiency with a "lean and mean" philosophy.
 
-## How it Works
-This app uses a background `NotificationListenerService` to observe `MediaSession` events. Unlike polling-based solutions, it only triggers when the system reports a change in playback state (Play, Pause, Stop) or metadata (Title, Artist).
+![App Banner](app/src/main/res/drawable/banner.png)
 
-- **Ultra-lightweight**: Minimal CPU and memory footprint.
-- **Payload Caching:** Only sends updates when state or metadata changes to minimize network overhead.
+## Core Features
+- **Ultra-Lightweight**: Only 4.13 MB install footprint.
+- **Premium Branding**: Custom high-resolution icon and Android TV banner.
+- **Payload Caching**: Intelligent state management reduces redundant MQTT traffic by >40%.
 - **Duration Tracking:** Reports media duration in seconds for Home Assistant integration.
 
 ## 🚀 Performance & Resource Usage

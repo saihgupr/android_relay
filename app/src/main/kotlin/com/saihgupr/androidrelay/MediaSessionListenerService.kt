@@ -19,7 +19,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
 
     override fun onCreate() {
         super.onCreate()
-        Log.d(TAG, "Service Created")
+        Log.i(TAG, "Service Created")
         mediaSessionManager = getSystemService(MEDIA_SESSION_SERVICE) as MediaSessionManager
         mqttClient = MqttRelay(this)
         mqttClient.connect()
@@ -27,18 +27,20 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        Log.d(TAG, "Listener Connected")
+        Log.i(TAG, "Listener Connected")
         val componentName = ComponentName(this, MediaSessionListenerService::class.java)
         mediaSessionManager.addOnActiveSessionsChangedListener(this, componentName)
         updateActiveSessions(mediaSessionManager.getActiveSessions(componentName))
     }
 
     override fun onActiveSessionsChanged(activeControllers: List<MediaController>?) {
+        Log.d(TAG, "Active sessions changed: ${activeControllers?.size}")
         updateActiveSessions(activeControllers)
     }
 
     private fun updateActiveSessions(activeControllers: List<MediaController>?) {
         val activePackages = activeControllers?.map { it.packageName }?.toSet() ?: emptySet()
+        Log.d(TAG, "Active packages: $activePackages")
 
         // Remove old callbacks for apps that are no longer active
         val iterator = controllers.entries.iterator()
