@@ -95,6 +95,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
         // `onPlaybackStateChanged` fires frequently for progress updates, which
         // causes unnecessary network I/O if the state/title/artist haven't actually changed.
         if (payload == lastPublishedPayloads[app]) {
+            Log.v(TAG, "Skipping identical payload for $app")
             return
         }
         lastPublishedPayloads[app] = payload
