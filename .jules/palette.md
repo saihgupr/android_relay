@@ -1,0 +1,3 @@
+## 2024-03-16 - [Android TV Focus States & Aspect Ratios]
+**Learning:** Native Android TV applications require explicit visual feedback for D-pad navigation. Standard Android Button/EditText widgets often lack visible focus rings by default. Additionally, Android TV launcher banners must strictly be a 16:9 aspect ratio (e.g., 320x180) to render correctly on the Leanback launcher. Using a square image causes it to render incorrectly.
+**Action:** When working on Android TV interfaces, always implement custom drawable selectors with `android:state_focused="true"` for all interactive elements to ensure accessibility via remote control. Always verify launcher banner images are exactly 16:9.

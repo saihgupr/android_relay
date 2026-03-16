@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1DB873</color>
+    <color name="primary_dark">#16945B</color>
+    <color name="primary_light">#2CD48A</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+    <color name="divider">#33FFFFFF</color>
+    <color name="input_bg">#2A2A2A</color>
+
+    <!-- Focus states for D-pad navigation -->
+    <color name="focus_outline">#1DB873</color>
+    <color name="focus_bg">#331DB873</color>
+</resources>
