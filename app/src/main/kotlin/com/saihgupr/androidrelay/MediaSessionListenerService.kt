@@ -13,11 +13,12 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     private lateinit var mediaSessionManager: MediaSessionManager
     private val controllers = mutableMapOf<String, MediaController>()
     private val callbacks = mutableMapOf<String, MediaController.Callback>()
+    private val lastPublishedPayloads = mutableMapOf<String, String>()
     private lateinit var mqttClient: MqttRelay
 
     override fun onCreate() {
         super.onCreate()
-        Log.i(TAG, "Service Created")
+        Log.d(TAG, "Service Created")
         mediaSessionManager = getSystemService(MEDIA_SESSION_SERVICE) as MediaSessionManager
         mqttClient = MqttRelay(this)
         mqttClient.connect()
@@ -25,7 +26,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        Log.i(TAG, "Listener Connected & Bound")
+        Log.d(TAG, "Listener Connected")
         val componentName = ComponentName(this, MediaSessionListenerService::class.java)
         mediaSessionManager.addOnActiveSessionsChangedListener(this, componentName)
         updateActiveSessions(mediaSessionManager.getActiveSessions(componentName))
@@ -36,9 +37,14 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     }
 
     private fun updateActiveSessions(activeControllers: List<MediaController>?) {
-        // Remove old callbacks
+        val activePackages = activeControllers?.map { it.packageName }?.toSet() ?: emptySet()
+
+        // Remove old callbacks and clean up payload cache for inactive sessions
         controllers.keys.forEach { key ->
             controllers[key]?.unregisterCallback(callbacks[key]!!)
+            if (key !in activePackages) {
+                lastPublishedPayloads.remove(key)
+            }
         }
         controllers.clear()
         callbacks.clear()
@@ -85,8 +91,16 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
             "app": "$app"
         }""".trimIndent()
 
-        Log.i(TAG, "Reporting state: $stateStr for $app")
-        mqttClient.publish(null, payload)
+        // Cache the payload per-app to prevent redundant MQTT publishes on position updates.
+        // `onPlaybackStateChanged` fires frequently for progress updates, which
+        // causes unnecessary network I/O if the state/title/artist haven't actually changed.
+        if (payload == lastPublishedPayloads[app]) {
+            return
+        }
+        lastPublishedPayloads[app] = payload
+
+        Log.d(TAG, "Reporting: $payload")
+        mqttClient.publish("android_tv/playback_state", payload)
     }
 
     override fun onDestroy() {
@@ -96,6 +110,6 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     }
 
     companion object {
-        private const val TAG = "AndroidRelay"
+        private const val TAG = "HATVRelay"
     }
 }
