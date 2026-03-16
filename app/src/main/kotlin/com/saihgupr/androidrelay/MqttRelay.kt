@@ -20,7 +20,11 @@ class MqttRelay(private val context: Context) {
     private val clientId = "AndroidTVRelay_${android.os.Build.ID}_${java.util.UUID.randomUUID().toString().take(4)}"
     private var mqttClient: MqttClient? = null
 
-    fun connect() {
+    interface MqttStatusListener {
+        fun onStatusUpdate(message: String, isError: Boolean = false)
+    }
+
+    fun connect(listener: MqttStatusListener? = null) {
         try {
             Thread {
                 try {
@@ -36,24 +40,30 @@ class MqttRelay(private val context: Context) {
                     mqttClient?.setCallback(object : MqttCallbackExtended {
                         override fun connectComplete(reconnect: Boolean, serverURI: String?) {
                             Log.i("AndroidRelay", "Connect successful to $serverURI (reconnect: $reconnect)")
+                            listener?.onStatusUpdate("Connected to $serverURI")
                         }
                         override fun connectionLost(cause: Throwable?) {
                             Log.w("AndroidRelay", "Connection lost: ${cause?.message}")
+                            listener?.onStatusUpdate("Connection lost: ${cause?.message}", true)
                         }
                         override fun messageArrived(topic: String?, message: MqttMessage?) {}
                         override fun deliveryComplete(token: IMqttDeliveryToken?) {}
                     })
 
                     Log.i("AndroidRelay", "Attempting to connect to $uri...")
+                    listener?.onStatusUpdate("Connecting to $uri...")
                     mqttClient?.connect(options)
                 } catch (e: MqttException) {
                     Log.e("AndroidRelay", "MqttException during connect: ${e.message}", e)
+                    listener?.onStatusUpdate("MQTT Error: ${e.message}", true)
                 } catch (e: Exception) {
                     Log.e("AndroidRelay", "Unexpected error during connect: ${e.message}", e)
+                    listener?.onStatusUpdate("Error: ${e.message}", true)
                 }
             }.start()
         } catch (e: Exception) {
             Log.e("AndroidRelay", "Error spawning connect thread", e)
+            listener?.onStatusUpdate("Failed to start connection thread", true)
         }
     }
 

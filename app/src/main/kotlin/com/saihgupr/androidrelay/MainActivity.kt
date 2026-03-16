@@ -45,14 +45,29 @@ class MainActivity : AppCompatActivity() {
             android.widget.Toast.makeText(this, "Configuration Saved", android.widget.Toast.LENGTH_SHORT).show()
         }
 
+        val testResultText = findViewById<TextView>(R.id.test_result_text)
+
         testButton.setOnClickListener {
             val mqtt = MqttRelay(this)
-            mqtt.connect()
-            // Wait a bit for connection before publishing
-            android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
-                mqtt.publish(null, "{\"status\": \"test\", \"message\": \"Hello from Android Relay UI\"}")
-                android.widget.Toast.makeText(this, "Test published (check logs)", android.widget.Toast.LENGTH_SHORT).show()
-            }, 2000)
+            testResultText.text = "Initializing..."
+            testResultText.setTextColor(android.graphics.Color.LTGRAY)
+            testButton.isEnabled = false
+            
+            mqtt.connect(object : MqttRelay.MqttStatusListener {
+                override fun onStatusUpdate(message: String, isError: Boolean) {
+                    runOnUiThread {
+                        testResultText.text = message
+                        if (isError) {
+                            testResultText.setTextColor(android.graphics.Color.RED)
+                            testButton.isEnabled = true
+                        } else if (message.startsWith("Connected")) {
+                            testResultText.setTextColor(android.graphics.Color.GREEN)
+                            mqtt.publish(null, "{\"status\": \"test\", \"message\": \"Hello from Android Relay UI\"}")
+                            testButton.isEnabled = true
+                        }
+                    }
+                }
+            })
         }
 
         updateStatus()
