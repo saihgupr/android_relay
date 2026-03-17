@@ -14,8 +14,16 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
     private lateinit var mediaSessionManager: MediaSessionManager
     private val controllers = mutableMapOf<String, MediaController>()
     private val callbacks = mutableMapOf<String, MediaController.Callback>()
-    private val lastPublishedPayloads = mutableMapOf<String, String>()
+    private val lastPublishedStates = mutableMapOf<String, MediaState>()
     private lateinit var mqttClient: MqttRelay
+
+    private data class MediaState(
+        val state: String,
+        val title: String,
+        val artist: String,
+        val app: String,
+        val duration: Long
+    )
 
     override fun onCreate() {
         super.onCreate()
@@ -49,7 +57,7 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
             if (pkg !in activePackages) {
                 controller.unregisterCallback(callbacks[pkg]!!)
                 callbacks.remove(pkg)
-                lastPublishedPayloads.remove(pkg)
+                lastPublishedStates.remove(pkg)
                 iterator.remove()
             }
         }
@@ -93,21 +101,24 @@ class MediaSessionListenerService : NotificationListenerService(), MediaSessionM
         val durationSec = if (durationMs > 0) durationMs / 1000 else 0L
         val app = controller.packageName
 
-        val payload = JSONObject().apply {
-            put("state", stateStr)
-            put("title", title)
-            put("artist", artist)
-            put("app", app)
-            put("duration", durationSec)
-        }.toString()
+        val currentState = MediaState(stateStr, title, artist, app, durationSec)
 
-        // Cache the payload per-app to prevent redundant MQTT publishes on position updates.
-        // `onPlaybackStateChanged` fires frequently for progress updates, which
-        // causes unnecessary network I/O if the state/title/artist haven't actually changed.
-        if (payload == lastPublishedPayloads[app]) {
+        // Cache the parsed state per-app to prevent redundant JSON creation and
+        // MQTT publishes on position updates. `onPlaybackStateChanged` fires
+        // frequently for progress updates, causing unnecessary object allocation
+        // and network I/O if the state hasn't actually changed.
+        if (currentState == lastPublishedStates[app]) {
             return
         }
-        lastPublishedPayloads[app] = payload
+        lastPublishedStates[app] = currentState
+
+        val payload = JSONObject().apply {
+            put("state", currentState.state)
+            put("title", currentState.title)
+            put("artist", currentState.artist)
+            put("app", currentState.app)
+            put("duration", currentState.duration)
+        }.toString()
 
         Log.d(TAG, "Reporting: $payload")
         mqttClient.publish(null, payload)
