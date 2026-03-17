@@ -2,11 +2,13 @@ package com.saihgupr.androidrelay
 
 import android.content.ComponentName
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,8 +32,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         saveButton.setOnClickListener {
-            val ip = mqttBrokerEdit.text.toString()
-            val topic = mqttTopicEdit.text.toString()
+            val ip = mqttBrokerEdit.text.toString().trim()
+            val topic = mqttTopicEdit.text.toString().trim()
+
+            // Basic input validation to prevent invalid configuration
+            if (ip.isEmpty() || topic.isEmpty()) {
+                android.widget.Toast.makeText(this, "Broker IP and Topic cannot be empty", android.widget.Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!android.util.Patterns.IP_ADDRESS.matcher(ip).matches() && !android.util.Patterns.DOMAIN_NAME.matcher(ip).matches()) {
+                android.widget.Toast.makeText(this, "Invalid Broker IP or Hostname", android.widget.Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             
             prefs.edit()
                 .putString("broker_ip", ip)
@@ -39,9 +51,13 @@ class MainActivity : AppCompatActivity() {
                 .apply()
             
             // Restart service to pick up changes
-            val componentName = ComponentName(this, MediaSessionListenerService::class.java)
-            android.service.notification.NotificationListenerService.requestRebind(componentName)
-            android.widget.Toast.makeText(this, "Relay Service Re-initialized", android.widget.Toast.LENGTH_SHORT).show()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                val componentName = ComponentName(this, MediaSessionListenerService::class.java)
+                android.service.notification.NotificationListenerService.requestRebind(componentName)
+                android.widget.Toast.makeText(this, "Relay Service Re-initialized", android.widget.Toast.LENGTH_SHORT).show()
+            } else {
+                android.widget.Toast.makeText(this, "Configuration saved. Please restart the app/device for changes to take effect.", android.widget.Toast.LENGTH_LONG).show()
+            }
         }
 
         val testResultText = findViewById<TextView>(R.id.test_result_text)
@@ -61,7 +77,12 @@ class MainActivity : AppCompatActivity() {
                             testButton.isEnabled = true
                         } else if (message.startsWith("Connected")) {
                             testResultText.setTextColor(android.graphics.Color.GREEN)
-                            mqtt.publish(null, "{\"status\": \"test\", \"message\": \"Hello from Android Relay UI\"}")
+                            // Use standard library for secure JSON serialization to prevent injection vulnerabilities
+                            val testPayload = JSONObject().apply {
+                                put("status", "test")
+                                put("message", "Hello from Android Relay UI")
+                            }.toString()
+                            mqtt.publish(null, testPayload)
                             testButton.isEnabled = true
                         }
                     }
