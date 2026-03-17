@@ -1,0 +1,3 @@
+## 2024-05-17 - TV D-Pad Focus Indicators Missing
+**Learning:** Hardcoding hex backgrounds (e.g., `#22FFFFFF`) on interactive elements like `EditText` removes Android TV's default focus indicators, making the interface inaccessible for D-pad users.
+**Action:** Always use `<selector>` drawables for interactive element backgrounds in Android TV apps, ensuring `android:state_focused="true"` is explicitly defined to provide clear visual feedback during keyboard/D-pad navigation.

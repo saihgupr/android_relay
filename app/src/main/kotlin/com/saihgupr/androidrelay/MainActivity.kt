@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
+    @android.annotation.TargetApi(android.os.Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,7 +41,9 @@ class MainActivity : AppCompatActivity() {
             
             // Restart service to pick up changes
             val componentName = ComponentName(this, MediaSessionListenerService::class.java)
-            android.service.notification.NotificationListenerService.requestRebind(componentName)
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                android.service.notification.NotificationListenerService.requestRebind(componentName)
+            }
             android.widget.Toast.makeText(this, "Relay Service Re-initialized", android.widget.Toast.LENGTH_SHORT).show()
         }
 

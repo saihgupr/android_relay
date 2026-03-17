@@ -2,3 +2,6 @@
 .gradle/
 app/build/
 build/
+app/build/
+.gradle/
+build/
