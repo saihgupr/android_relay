@@ -36,6 +36,11 @@ class MqttRelay(private val context: Context) {
                     options.isAutomaticReconnect = true
                     options.isCleanSession = true
                     options.connectionTimeout = 10
+
+                    if (prefs.getBoolean("use_auth", false)) {
+                        options.userName = prefs.getString("username", "")
+                        options.password = prefs.getString("password", "")?.toCharArray()
+                    }
                     
                     mqttClient?.setCallback(object : MqttCallbackExtended {
                         override fun connectComplete(reconnect: Boolean, serverURI: String?) {

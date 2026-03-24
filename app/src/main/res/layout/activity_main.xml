@@ -139,6 +139,54 @@
                 android:textColorHint="@color/text_hint"
                 android:textSize="15sp" />
 
+            <!-- Authentication Toggle -->
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/mqtt_auth_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Use Authentication"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <!-- Authentication Fields Container -->
+            <LinearLayout
+                android:id="@+id/mqtt_auth_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/mqtt_username_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="0dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/mqtt_password_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="0dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
             <!-- Test Connection Row -->
             <LinearLayout
                 android:layout_width="match_parent"

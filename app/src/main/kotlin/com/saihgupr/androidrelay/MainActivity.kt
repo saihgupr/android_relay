@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         val permissionButton = findViewById<Button>(R.id.permission_button)
         val mqttBrokerEdit = findViewById<android.widget.EditText>(R.id.mqtt_broker_edit)
         val mqttTopicEdit = findViewById<android.widget.EditText>(R.id.mqtt_topic_edit)
+        val mqttAuthSwitch = findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.mqtt_auth_switch)
+        val mqttAuthContainer = findViewById<android.widget.LinearLayout>(R.id.mqtt_auth_container)
+        val mqttUsernameEdit = findViewById<android.widget.EditText>(R.id.mqtt_username_edit)
+        val mqttPasswordEdit = findViewById<android.widget.EditText>(R.id.mqtt_password_edit)
         val saveButton = findViewById<Button>(R.id.save_config_button)
         val testButton = findViewById<Button>(R.id.test_mqtt_button)
 
@@ -24,6 +28,16 @@ class MainActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("mqtt_config", MODE_PRIVATE)
         mqttBrokerEdit.setText(prefs.getString("broker_ip", "192.168.1.199"))
         mqttTopicEdit.setText(prefs.getString("topic", "android_tv/playback_state"))
+        
+        val useAuth = prefs.getBoolean("use_auth", false)
+        mqttAuthSwitch.isChecked = useAuth
+        mqttAuthContainer.visibility = if (useAuth) android.view.View.VISIBLE else android.view.View.GONE
+        mqttUsernameEdit.setText(prefs.getString("username", ""))
+        mqttPasswordEdit.setText(prefs.getString("password", ""))
+
+        mqttAuthSwitch.setOnCheckedChangeListener { _, isChecked ->
+            mqttAuthContainer.visibility = if (isChecked) android.view.View.VISIBLE else android.view.View.GONE
+        }
 
         permissionButton.setOnClickListener {
             startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
@@ -32,10 +46,16 @@ class MainActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             val ip = mqttBrokerEdit.text.toString()
             val topic = mqttTopicEdit.text.toString()
+            val auth = mqttAuthSwitch.isChecked
+            val user = mqttUsernameEdit.text.toString()
+            val pass = mqttPasswordEdit.text.toString()
             
             prefs.edit()
                 .putString("broker_ip", ip)
                 .putString("topic", topic)
+                .putBoolean("use_auth", auth)
+                .putString("username", user)
+                .putString("password", pass)
                 .apply()
             
             // Restart service to pick up changes
