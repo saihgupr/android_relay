@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.AndroidRelay" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/accent_blue</item>
+        <item name="android:windowBackground">@color/bg_primary</item>
+        <item name="android:statusBarColor">@color/bg_primary</item>
+        <item name="android:navigationBarColor">@color/bg_primary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:editTextStyle">@style/Widget.AndroidRelay.EditText</item>
+    </style>
+
+    <style name="Widget.AndroidRelay.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+</resources>

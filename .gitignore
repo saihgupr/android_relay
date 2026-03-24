@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+
+# Android Studio
+*.iml
+.idea/
+.DS_Store
+
+# Re-add project specific build
+app/build/
+/app/build/
+/build/
+
+# Local environment files
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.ap_
+*.dex
+*.class
+.git-backup-*

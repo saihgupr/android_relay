@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_primary">#0F0F11</color>
+    <color name="surface_card">#1C1C1E</color>
+    <color name="surface_input">#111113</color>
+    <color name="accent_blue">#3A8EF6</color>
+    <color name="text_primary">#F2F2F7</color>
+    <color name="text_secondary">#8E8E93</color>
+    <color name="text_hint">#48484A</color>
+    <color name="status_ok">#30D158</color>
+    <color name="status_error">#FF453A</color>
+    <color name="accent_blue_focused">#5AA9FF</color>
+    <color name="accent_blue_dim">#2A7ED6</color>
+    <color name="divider">#2C2C2E</color>
+    <color name="stroke">#2C2C2E</color>
+</resources>
